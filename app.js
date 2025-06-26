@@ -1,5 +1,6 @@
 const { createApp, ref } = Vue;
 
+// 主计算器应用
 createApp({
   setup() {
     const input = ref({
@@ -92,6 +93,11 @@ createApp({
       results.value.fh = input.value.gbw / input.value.gain;
     };
 
+    // Auto-trigger calculate function every second
+    setInterval(() => {
+      calculate();
+    }, 100);
+
     // Initial calculation
     calculate();
 
@@ -103,3 +109,10 @@ createApp({
     };
   }
 }).mount('#app');
+
+// 拖拽编辑器应用
+createApp({
+  components: {
+    'draggable-editor': DraggableEditor
+  }
+}).mount('#editor-app');

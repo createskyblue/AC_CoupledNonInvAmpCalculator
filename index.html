@@ -83,7 +83,21 @@
         </div>
       </div>
     </div>
-    		<!-- 页脚 -->
+    <div style="position: absolute; margin-left: 273px; margin-top: -1356px"><p>R<sub>1</sub> = {{ formatValue(results.r1 * 1000, 'Ω').value.toFixed(3) }} {{ formatValue(results.r1 * 1000, 'Ω').unit }}</p></div>
+    <div style="position: absolute; margin-left: 429px; margin-top: -1356px"><p>R<sub>4</sub> = {{ formatValue(results.r4 * 1000, 'Ω').value.toFixed(3) }} {{ formatValue(results.r4 * 1000, 'Ω').unit }}</p></div>
+    <div style="position: absolute; margin-left: 215px; margin-top: -1049px"><p>R<sub>3</sub> = {{ formatValue(results.r3 * 1000, 'Ω').value.toFixed(3) }} {{ formatValue(results.r3 * 1000, 'Ω').unit }}</p></div>
+    <div style="position: absolute; margin-left: 216px; margin-top: -1185px"><p>R<sub>2</sub> = {{ formatValue(results.r2 * 1000, 'Ω').value.toFixed(3) }} {{ formatValue(results.r2 * 1000, 'Ω').unit }}</p></div>
+    <div style="position: absolute; margin-left: 184px; margin-top: -1312px"><p>C<sub>1</sub> = {{ formatValue(results.c1 / 1e9, 'F').value.toFixed(3) }} {{ formatValue(results.c1 / 1e9, 'F').unit }}</p></div>
+    <div style="position: absolute; margin-left: 55px; margin-top: -1163px"><p>C<sub>2</sub> = {{ formatValue(results.c2 / 1e9, 'F').value.toFixed(3) }} {{ formatValue(results.c2 / 1e9, 'F').unit }}</p></div>
+    <div style="position: absolute; margin-left: 556px; margin-top: -1133px"><p>f<sub>H</sub> = {{ results.fh }} MHz</p></div>
+    
+    <!-- 拖拽编辑器组件 -->
+
+    <div id="editor-app">
+      <draggable-editor></draggable-editor>
+    </div>
+    
+    <!-- 页脚 -->
 		<div class="mt-8 text-center text-gray-500 text-sm">
 			<p>Created by <a href="https://github.com/createskyblue" target="_blank"
 					class="text-blue-500 hover:underline">createskyblue</a></p>
@@ -109,6 +123,8 @@
 
   </div>
 
+  <!-- 将组件脚本放在最后确保所有依赖已加载 -->
+  <script src="js/components/draggable-editor.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
