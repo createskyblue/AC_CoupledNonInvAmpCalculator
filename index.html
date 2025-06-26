@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>交流耦合同向放大电路计算器</title>
+  <script type="text/javascript" src="./js/tailwind.min.js"></script>
+  <script type="text/javascript" src="./js/vue.global.js"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <div id="app" class="container mx-auto p-4 max-w-3xl">
+    <div class="text-center mb-6">
+      <h1 class="text-2xl font-bold">交流耦合同向放大电路计算器</h1>
+    </div>
+    
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+      <img src="交流耦合同相放大器电路.png" alt="交流耦合同相放大器电路图" class="mx-auto max-w-full h-auto">
+    </div>
+    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+      <h2 class="text-xl font-semibold mb-4">输入参数</h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">交流电压增益 (G<sub>ac</sub>)</label>
+          <input v-model="input.gain" type="number" class="w-full p-2 border rounded">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">参考电压 (V<sub>ref</sub>)</label>
+          <input v-model="input.vref" type="number" class="w-full p-2 border rounded">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">直流输出电压 (V<sub>DC</sub>)</label>
+          <input v-model="input.vdc" type="number" class="w-full p-2 border rounded">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">低频截止频率 (f<sub>L</sub>, Hz)</label>
+          <input v-model="input.fl" type="number" class="w-full p-2 border rounded">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">运放增益带宽 (GBW, MHz)</label>
+          <input v-model="input.gbw" type="number" class="w-full p-2 border rounded">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">R<sub>1</sub> (kΩ)</label>
+          <input v-model="input.r1" type="number" class="w-full p-2 border rounded">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">R<sub>3</sub> (kΩ)</label>
+          <input v-model="input.r3" type="number" class="w-full p-2 border rounded">
+        </div>
+      </div>
+      
+      <button @click="calculate" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
+        计算
+      </button>
+    </div>
+    
+    <div class="bg-white rounded-lg shadow-md p-6">
+      <h2 class="text-xl font-semibold mb-4">计算结果</h2>
+      
+      <div class="space-y-4">
+        <div>
+          <h3 class="font-medium">1. 交流电压增益电阻</h3>
+          <p>R<sub>1</sub> = {{ formatValue(results.r1 * 1000, 'Ω').value.toFixed(3) }} {{ formatValue(results.r1 * 1000, 'Ω').unit }}</p>
+          <p>R<sub>4</sub> = {{ formatValue(results.r4 * 1000, 'Ω').value.toFixed(3) }} {{ formatValue(results.r4 * 1000, 'Ω').unit }}</p>
+        </div>
+        
+        <div>
+          <h3 class="font-medium">2. 直流输出电压电阻</h3>
+          <p>R<sub>3</sub> = {{ formatValue(results.r3 * 1000, 'Ω').value.toFixed(3) }} {{ formatValue(results.r3 * 1000, 'Ω').unit }}</p>
+          <p>R<sub>2</sub> = {{ formatValue(results.r2 * 1000, 'Ω').value.toFixed(3) }} {{ formatValue(results.r2 * 1000, 'Ω').unit }}</p>
+        </div>
+        
+        <div>
+          <h3 class="font-medium">3. 低频截止频率电容</h3>
+          <p>C<sub>1</sub> = {{ formatValue(results.c1 / 1e9, 'F').value.toFixed(3) }} {{ formatValue(results.c1 / 1e9, 'F').unit }}</p>
+          <p>C<sub>2</sub> = {{ formatValue(results.c2 / 1e9, 'F').value.toFixed(3) }} {{ formatValue(results.c2 / 1e9, 'F').unit }}</p>
+        </div>
+        
+        <div>
+          <h3 class="font-medium">4. 高频截止频率</h3>
+          <p>f<sub>H</sub> = {{ results.fh }} MHz</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
