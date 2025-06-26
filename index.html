@@ -87,9 +87,9 @@
     <div style="position: absolute; margin-left: 429px; margin-top: -1356px"><p>R<sub>4</sub> = {{ formatValue(results.r4 * 1000, 'Ω').str }}</p></div>
     <div style="position: absolute; margin-left: 215px; margin-top: -1049px"><p>R<sub>3</sub> = {{ formatValue(results.r3 * 1000, 'Ω').str }}</p></div>
     <div style="position: absolute; margin-left: 216px; margin-top: -1185px"><p>R<sub>2</sub> = {{ formatValue(results.r2 * 1000, 'Ω').str }}</p></div>
-    <div style="position: absolute; margin-left: 184px; margin-top: -1312px"><p>C<sub>1</sub> = {{ formatValue(results.c1 * 1e9, 'F').str }}</p></div>
+    <div style="position: absolute; margin-left: 184px; margin-top: -1312px"><p>C<sub>1</sub> = {{ formatValue(results.c1 / 1e9, 'F').str }}</p></div>
     <div style="position: absolute; margin-left: 55px; margin-top: -1163px"><p>C<sub>2</sub>  = {{ formatValue(results.c2 / 1e9, 'F').str }}</p></div>
-    <div style="position: absolute; margin-left: 556px; margin-top: -1133px"><p>f<sub>H</sub> = {{ formatValue(results.fh / 1e9, 'Hz').str }}</p></div>
+    <div style="position: absolute; margin-left: 556px; margin-top: -1133px"><p>f<sub>H</sub> = {{ formatValue(results.fh * 1e6, 'Hz').str }}</p></div>
     
     <!-- 拖拽编辑器组件 -->
 
