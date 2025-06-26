@@ -61,35 +61,35 @@
       <div class="space-y-4">
         <div>
           <h3 class="font-medium">1. 交流电压增益电阻</h3>
-          <p>R<sub>1</sub> = {{ formatValue(results.r1 * 1000, 'Ω').value.toFixed(3) }} {{ formatValue(results.r1 * 1000, 'Ω').unit }}</p>
-          <p>R<sub>4</sub> = {{ formatValue(results.r4 * 1000, 'Ω').value.toFixed(3) }} {{ formatValue(results.r4 * 1000, 'Ω').unit }}</p>
+          <p>R<sub>1</sub> = {{ formatValue(results.r1 * 1000, 'Ω').str }}</p>
+          <p>R<sub>4</sub> = {{ formatValue(results.r4 * 1000, 'Ω').str }}</p>
         </div>
         
         <div>
           <h3 class="font-medium">2. 直流输出电压电阻</h3>
-          <p>R<sub>3</sub> = {{ formatValue(results.r3 * 1000, 'Ω').value.toFixed(3) }} {{ formatValue(results.r3 * 1000, 'Ω').unit }}</p>
-          <p>R<sub>2</sub> = {{ formatValue(results.r2 * 1000, 'Ω').value.toFixed(3) }} {{ formatValue(results.r2 * 1000, 'Ω').unit }}</p>
+          <p>R<sub>3</sub> = {{ formatValue(results.r3 * 1000, 'Ω').str }}</p>
+          <p>R<sub>2</sub> = {{ formatValue(results.r2 * 1000, 'Ω').str }}</p>
         </div>
         
         <div>
           <h3 class="font-medium">3. 低频截止频率电容</h3>
-          <p>C<sub>1</sub> = {{ formatValue(results.c1 / 1e9, 'F').value.toFixed(3) }} {{ formatValue(results.c1 / 1e9, 'F').unit }}</p>
-          <p>C<sub>2</sub> = {{ formatValue(results.c2 / 1e9, 'F').value.toFixed(3) }} {{ formatValue(results.c2 / 1e9, 'F').unit }}</p>
+          <p>C<sub>1</sub> = {{ formatValue(results.c1 / 1e9, 'F').str }}</p>
+          <p>C<sub>2</sub> = {{ formatValue(results.c2 / 1e9, 'F').str }}</p>
         </div>
         
         <div>
           <h3 class="font-medium">4. 高频截止频率</h3>
-          <p>f<sub>H</sub> = {{ results.fh }} MHz</p>
+          <p>f<sub>H</sub> ={{ formatValue(results.fh * 1e6, 'Hz').str }}</p>
         </div>
       </div>
     </div>
-    <div style="position: absolute; margin-left: 273px; margin-top: -1356px"><p>R<sub>1</sub> = {{ formatValue(results.r1 * 1000, 'Ω').value.toFixed(3) }} {{ formatValue(results.r1 * 1000, 'Ω').unit }}</p></div>
-    <div style="position: absolute; margin-left: 429px; margin-top: -1356px"><p>R<sub>4</sub> = {{ formatValue(results.r4 * 1000, 'Ω').value.toFixed(3) }} {{ formatValue(results.r4 * 1000, 'Ω').unit }}</p></div>
-    <div style="position: absolute; margin-left: 215px; margin-top: -1049px"><p>R<sub>3</sub> = {{ formatValue(results.r3 * 1000, 'Ω').value.toFixed(3) }} {{ formatValue(results.r3 * 1000, 'Ω').unit }}</p></div>
-    <div style="position: absolute; margin-left: 216px; margin-top: -1185px"><p>R<sub>2</sub> = {{ formatValue(results.r2 * 1000, 'Ω').value.toFixed(3) }} {{ formatValue(results.r2 * 1000, 'Ω').unit }}</p></div>
-    <div style="position: absolute; margin-left: 184px; margin-top: -1312px"><p>C<sub>1</sub> = {{ formatValue(results.c1 / 1e9, 'F').value.toFixed(3) }} {{ formatValue(results.c1 / 1e9, 'F').unit }}</p></div>
-    <div style="position: absolute; margin-left: 55px; margin-top: -1163px"><p>C<sub>2</sub> = {{ formatValue(results.c2 / 1e9, 'F').value.toFixed(3) }} {{ formatValue(results.c2 / 1e9, 'F').unit }}</p></div>
-    <div style="position: absolute; margin-left: 556px; margin-top: -1133px"><p>f<sub>H</sub> = {{ results.fh }} MHz</p></div>
+    <div style="position: absolute; margin-left: 273px; margin-top: -1356px"><p>R<sub>1</sub> = {{ formatValue(results.r1 * 1000, 'Ω').str }}</p></div>
+    <div style="position: absolute; margin-left: 429px; margin-top: -1356px"><p>R<sub>4</sub> = {{ formatValue(results.r4 * 1000, 'Ω').str }}</p></div>
+    <div style="position: absolute; margin-left: 215px; margin-top: -1049px"><p>R<sub>3</sub> = {{ formatValue(results.r3 * 1000, 'Ω').str }}</p></div>
+    <div style="position: absolute; margin-left: 216px; margin-top: -1185px"><p>R<sub>2</sub> = {{ formatValue(results.r2 * 1000, 'Ω').str }}</p></div>
+    <div style="position: absolute; margin-left: 184px; margin-top: -1312px"><p>C<sub>1</sub> = {{ formatValue(results.c1 * 1e9, 'F').str }}</p></div>
+    <div style="position: absolute; margin-left: 55px; margin-top: -1163px"><p>C<sub>2</sub>  = {{ formatValue(results.c2 / 1e9, 'F').str }}</p></div>
+    <div style="position: absolute; margin-left: 556px; margin-top: -1133px"><p>f<sub>H</sub> = {{ formatValue(results.fh / 1e9, 'Hz').str }}</p></div>
     
     <!-- 拖拽编辑器组件 -->
 

@@ -40,31 +40,38 @@ createApp({
       );
     };
 
-    // Format value with automatic unit scaling
+    // Format value with automatic unit scaling (supports any unit)
     const formatValue = (value, unit) => {
+      const prefixes = [
+        { scale: 1e12, prefix: 'T' },
+        { scale: 1e9, prefix: 'G' },
+        { scale: 1e6, prefix: 'M' },
+        { scale: 1e3, prefix: 'k' },
+        { scale: 1, prefix: '' },
+        { scale: 1e-3, prefix: 'm' },
+        { scale: 1e-6, prefix: 'μ' },
+        { scale: 1e-9, prefix: 'n' },
+        { scale: 1e-12, prefix: 'p' }
+      ];
+      
       const absValue = Math.abs(value);
-      if (unit === 'Ω') {
-        if (absValue >= 1e6) {
-          return { value: value / 1e6, unit: 'MΩ' };
-        } else if (absValue >= 1e3) {
-          return { value: value / 1e3, unit: 'kΩ' };
-        } else if (absValue >= 1) {
-          return { value, unit: 'Ω' };
-        } else {
-          return { value: value * 1e3, unit: 'mΩ' };
-        }
-      } else if (unit === 'F') {
-        if (absValue >= 1e-3) {
-          return { value: value * 1e3, unit: 'mF' };
-        } else if (absValue >= 1e-6) {
-          return { value: value * 1e6, unit: 'μF' };
-        } else if (absValue >= 1e-9) {
-          return { value: value * 1e9, unit: 'nF' };
-        } else {
-          return { value: value * 1e12, unit: 'pF' };
+      let bestMatch = prefixes[prefixes.length-1]; // Start with smallest scale
+      
+      // Find the largest scale where value >= scale
+      for (const { scale, prefix } of prefixes) {
+        if (absValue >= scale) {
+          bestMatch = { scale, prefix };
+          break; // Use first (largest) matching scale
         }
       }
-      return { value, unit };
+      
+      const scaledValue = value / bestMatch.scale;
+      const fullUnit = bestMatch.prefix + unit;
+      return {
+        value: scaledValue,
+        unit: fullUnit,
+        str: `${scaledValue.toFixed(3)}${fullUnit}`
+      };
     };
 
     const calculate = () => {
