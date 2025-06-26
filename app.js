@@ -73,7 +73,7 @@ createApp({
       results.value.r3 = input.value.r3;
 
       // 2. Calculate R4 and standard value
-      results.value.r4 = input.value.gain - 1;
+      results.value.r4 = results.value.r1 * (input.value.gain - 1);
       results.value.r4Std = findClosestStandard(results.value.r4, 'resistors');
 
       // 3. Calculate R2
